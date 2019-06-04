@@ -1,8 +1,9 @@
-# Guinea Pig
+<p align="center">
+  <img src="./guinea-pig.jpg" alt="Technically it's suppossed to be a hamster sitting in a little airplane. From The Simpsons episode 'Duffless'" />
+</p>
 
-Sample application for testing various cloud platforms
+# Guinea Pig (client)
 
-<figure>
-  <img src="./guinea-pig.jpg" alt="Technically it's a hamster sitting in a little airplane. From The Simpsons episode 'Duffless'">
-  <figcaption>Oh, look he's got miniature goggles on ...and a little scarf.</figcaption>
-</figure>
+A sample application for testing various cloud platforms
+
+_Coming Soon_
