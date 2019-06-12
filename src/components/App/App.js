@@ -1,5 +1,6 @@
-import React   from 'react';
-import Counter from '../Counter/Counter';
+import React        from 'react';
+import Counter      from '../Counter/Counter';
+import ServerStatus from '../ServerStatus/ServerStatus';
 
 import './App.css';
 
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
 
       <Counter />
+      <ServerStatus />
     </div>
   );
 }
