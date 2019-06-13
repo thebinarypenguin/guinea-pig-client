@@ -11,18 +11,18 @@ lib.ping = function () {
     .then((res) => {
 
       if (res.status !== 200) {
-        return res.json().then(e => Promise.reject(e))
+        return res.json().then(e => Promise.reject(e));
       }
 
       return true;
-    })
+    });
 };
 
 lib.crash = function () {
 
   return fetch(`${api}/crash`, {
     method: 'POST',
-  })
+  });
 };
 
 class ServerStatus extends React.Component {
@@ -38,58 +38,58 @@ class ServerStatus extends React.Component {
 
     this.startWatching = this.startWatching.bind(this);
     this.stopWatching  = this.stopWatching.bind(this);
-    this.ping          = this.ping.bind(this);
-    this.crash         = this.crash.bind(this);
+    this.poll          = this.poll.bind(this);
   }
 
   startWatching() {
 
-    if (this.state.watching) {
+    const { watching } = this.state;
+
+    if (watching) {
       return;
     }
 
     this.setState({
       watching: true,
-    })
+    });
 
-    this.ping();
+    this.poll();
   }
 
   stopWatching() {
 
     this.setState({
-      status: '-',
-      watching: false,
+      status   : '-',
+      watching : false,
     });
   }
 
-  ping() {
+  poll() {
+
+    const { watching } = this.state;
 
     return lib
       .ping()
       .then(() => {
-        if (this.state.watching) {
+        if (watching) {
           this.setState({ status: 'up' });
         }
       })
       .catch(() => {
-        if (this.state.watching) {
+        if (watching) {
           this.setState({ status: 'down' });
         }
       })
       .finally(() => {
-        if (this.state.watching) {
-          setTimeout(this.ping, 0.5 * 1000)
+        if (watching) {
+          setTimeout(this.poll, 0.5 * 1000);
         }
       });
   }
 
-  crash() {
-
-    lib.crash().then(console.log).catch(console.log);
-  }
-
   render() {
+
+    const { error, status, watching } = this.state;
 
     return (
       <div className="ServerStatus">
@@ -97,14 +97,14 @@ class ServerStatus extends React.Component {
         <h2>Server Status</h2>
         <p>GET /status</p>
 
-        <div className="error">{ this.state.error }</div>
+        <div className="error">{ error }</div>
 
-        <div className="status">{ this.state.status }</div>
+        <div className="status">{ status }</div>
 
-        { !this.state.watching && <button className="toggle" type="button" onClick={this.startWatching}>Start Watching</button> }
-        { this.state.watching && <button className="toggle" type="button" onClick={this.stopWatching}>Stop Watching</button> }
+        { !watching && <button className="toggle" type="button" onClick={this.startWatching}>Start Watching</button> }
+        { watching && <button className="toggle" type="button" onClick={this.stopWatching}>Stop Watching</button> }
 
-        <button className="crash" type="button" onClick={this.crash} >Crash</button>
+        <button className="crash" type="button" onClick={lib.crash}>Crash</button>
       </div>
     );
   }

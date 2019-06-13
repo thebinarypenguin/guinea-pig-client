@@ -1,5 +1,8 @@
 {
   "extends": "airbnb",
+  "env": {
+    "browser": true
+  },
   "rules": {
     "no-multi-spaces": [
       "error",
@@ -8,7 +11,8 @@
         "exceptions": {
           "Property": true,
           "VariableDeclarator": true,
-          "ImportDeclaration": true
+          "ImportDeclaration": true,
+          "AssignmentExpression": true
         }
       }
     ],
@@ -32,6 +36,12 @@
     "func-names": "off",
     "arrow-body-style": "off",
     "import/order": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ]
   }
 }
