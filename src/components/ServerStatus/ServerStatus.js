@@ -1,8 +1,10 @@
 import React from 'react';
+import config from '../../config';
+
 
 import './ServerStatus.css';
 
-const api = 'http://localhost:8000';
+const api = config.apiRoot;
 const lib = {};
 
 lib.ping = function () {
