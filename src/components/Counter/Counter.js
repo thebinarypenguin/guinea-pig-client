@@ -1,8 +1,9 @@
-import React from 'react';
+import React  from 'react';
+import config from '../../config';
 
 import './Counter.css';
 
-const api = 'http://localhost:8000';
+const api = config.apiRoot;
 const lib = {};
 
 lib.get = function () {
