@@ -45,9 +45,7 @@ class ServerStatus extends React.Component {
 
   startWatching() {
 
-    const { watching } = this.state;
-
-    if (watching) {
+    if (this.state.watching) {
       return;
     }
 
@@ -68,22 +66,20 @@ class ServerStatus extends React.Component {
 
   poll() {
 
-    const { watching } = this.state;
-
     return lib
       .ping()
       .then(() => {
-        if (watching) {
+        if (this.state.watching) {
           this.setState({ status: 'up' });
         }
       })
       .catch(() => {
-        if (watching) {
+        if (this.state.watching) {
           this.setState({ status: 'down' });
         }
       })
       .finally(() => {
-        if (watching) {
+        if (this.state.watching) {
           setTimeout(this.poll, 0.5 * 1000);
         }
       });
