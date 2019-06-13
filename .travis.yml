@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - node    # Latest Stable
+  - lts/*   # Latest LTS
+cache:
+  directories:
+  - "$HOME/.npm"
+install:
+  - npm ci
+script:
+  - npm test
