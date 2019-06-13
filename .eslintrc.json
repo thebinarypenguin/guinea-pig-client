@@ -1,0 +1,47 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "no-multi-spaces": [
+      "error",
+      {
+        "ignoreEOLComments": true,
+        "exceptions": {
+          "Property": true,
+          "VariableDeclarator": true,
+          "ImportDeclaration": true,
+          "AssignmentExpression": true
+        }
+      }
+    ],
+    "key-spacing": [
+      "error",
+      {
+        "align": {
+          "beforeColon": true,
+          "afterColon": true,
+          "on": "colon"
+        }
+      }
+    ],
+    "padded-blocks": "off",
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "none"
+      }
+    ],
+    "func-names": "off",
+    "arrow-body-style": "off",
+    "import/order": "off",
+    "consistent-return": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ]
+  }
+}

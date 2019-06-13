@@ -1,3 +1,5 @@
+/* globals it document */
+
 import React        from 'react';
 import ReactDOM     from 'react-dom';
 import ServerStatus from './ServerStatus';

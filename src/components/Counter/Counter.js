@@ -11,7 +11,7 @@ lib.get = function () {
     .then((res) => {
 
       if (res.status !== 200) {
-        return res.json().then(e => Promise.reject(e))
+        return res.json().then(e => Promise.reject(e));
       }
 
       return res.json();
@@ -21,39 +21,39 @@ lib.get = function () {
 lib.increment = function (step = 1) {
 
   return fetch(`${api}/counter`, {
-    method: 'PUT',
-    headers: {
+    method  : 'PUT',
+    headers : {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ step }),
   })
-  .then((res) => {
+    .then((res) => {
 
-    if (res.status !== 200) {
-      return res.json().then(e => Promise.reject(e))
-    };
+      if (res.status !== 200) {
+        return res.json().then(e => Promise.reject(e));
+      }
 
-    return res.json();
-  })
+      return res.json();
+    });
 };
 
 lib.decrement = function (step = 1) {
 
   return fetch(`${api}/counter`, {
-    method: 'PUT',
-    headers: {
+    method  : 'PUT',
+    headers : {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ step: step * -1 }),
   })
-  .then((res) => {
+    .then((res) => {
 
-    if (res.status !== 200) {
-      return res.json().then(e => Promise.reject(e))
-    };
+      if (res.status !== 200) {
+        return res.json().then(e => Promise.reject(e));
+      }
 
-    return res.json();
-  })
+      return res.json();
+    });
 };
 
 class Counter extends React.Component {
@@ -62,8 +62,8 @@ class Counter extends React.Component {
     super(props);
 
     this.state = {
-      value: '-',
-      error: null,
+      value : '-',
+      error : null,
     };
 
     this.increment = this.increment.bind(this);
@@ -87,9 +87,10 @@ class Counter extends React.Component {
           error: 'Cannot get counter value',
         });
 
+        /* eslint-disable-next-line no-console */
         console.log(err);
       });
-  };
+  }
 
   increment() {
 
@@ -110,6 +111,7 @@ class Counter extends React.Component {
           error: 'Cannot increment counter value',
         });
 
+        /* eslint-disable-next-line no-console */
         console.log(err);
       });
   }
@@ -133,11 +135,14 @@ class Counter extends React.Component {
           error: 'Cannot decrement counter value',
         });
 
+        /* eslint-disable-next-line no-console */
         console.log(err);
       });
   }
 
   render() {
+
+    const { error, value } = this.state;
 
     return (
       <div className="Counter">
@@ -145,12 +150,12 @@ class Counter extends React.Component {
         <h2>Counter</h2>
         <p>Persistent state test</p>
 
-        <div className="error">{ this.state.error }</div>
+        <div className="error">{ error }</div>
 
-        <div className="value">{ this.state.value }</div>
+        <div className="value">{ value }</div>
 
-        <button className="increment" type="button" onClick={this.increment} >Increment</button>
-        <button className="decrement"type="button" onClick={this.decrement} >Decrement</button>
+        <button className="increment" type="button" onClick={this.increment}>Increment</button>
+        <button className="decrement" type="button" onClick={this.decrement}>Decrement</button>
       </div>
     );
   }
