@@ -9,4 +9,5 @@ install:
   - npm ci
 script:
   - npm test
+  - codecov
   - npm run build
