@@ -6,7 +6,7 @@
 
 A sample application for testing various cloud platforms
 
-[![Build Status](https://travis-ci.com/thebinarypenguin/guinea-pig-client.svg?branch=master)](https://travis-ci.com/thebinarypenguin/guinea-pig-client)
+[![Build Status](https://travis-ci.com/thebinarypenguin/guinea-pig-client.svg?branch=master)](https://travis-ci.com/thebinarypenguin/guinea-pig-client) [![Greenkeeper badge](https://badges.greenkeeper.io/thebinarypenguin/guinea-pig-client.svg)](https://greenkeeper.io/)
 
 ## Installation
 
